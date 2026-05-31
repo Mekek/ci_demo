@@ -1,0 +1,22 @@
+name: CI Demo
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Склонировать репозиторий
+        uses: actions/checkout@v3
+
+      - name: Установить Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Установить pytest
+        run: pip install pytest
+
+      - name: Запустить тесты
+        run: pytest
